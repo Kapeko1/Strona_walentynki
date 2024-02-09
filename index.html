@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wez sie zastanów</title>
+    <style>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: url('bg.jpg') center/cover no-repeat; /* Zastąp ścieżką do własnego obrazka */
+}
+
+        #image-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #yes-button {
+            background-color: green;
+            color: white;
+        }
+
+        #no-button {
+            background-color: red;
+            color: white;
+        }
+
+ #grumpy-image {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 200px; /* Zmieniony szerokość na 200px */
+            height: auto; /* Automatyczna wysokość dla zachowania proporcji */
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <!-- Tutaj umieść ścieżkę do swojego obrazka -->
+        <img src="1.png" alt="Obrazek">
+    </div>
+    <button id="yes-button" onclick="moveToNextPage()">Tak</button>
+    <button id="no-button" onclick="handleNoButtonClick()">Nie</button>
+
+    <!-- Dodajemy ukryty obrazek -->
+    <img id="grumpy-image" src="grumpy.png" alt="Grumpy Cat">
+
+    <script>
+
+        function moveToNextPage() {
+            // Przeniesienie na drugą stronę HTML
+            window.location.href = "nieklik.html";
+        }
+        function handleNoButtonClick() {
+            // Przesuwanie przycisku "Nie"
+            var button = document.getElementById("no-button");
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+
+            var randomX = Math.floor(Math.random() * maxX);
+            var randomY = Math.floor(Math.random() * maxY);
+
+            button.style.position = "absolute";
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+
+            // Pokazywanie obrazka "Grumpy Cat"
+            var grumpyImage = document.getElementById("grumpy-image");
+            grumpyImage.style.display = "block";
+        }
+    </script>
+</body>
+</html>
